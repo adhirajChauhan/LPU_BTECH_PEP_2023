@@ -47,24 +47,36 @@ int main()
 
     //---------------------------------------------------LOOPS
     //----------------For Loop
+    int i = 0;
     // for(init;termination;inc/dec){
     //     body
     // }
 
-    // for(i = 0; i <= 10; i++){
-
-    //     cout << i << endl;
-    // }
+    for(i = 0; i <= 10; i++){
+        if(i == 4){
+            continue;
+        }
+        if(i == 8)
+        {
+            break;
+        }
+        cout << i << endl;
+    }
 
     // for(;;){
     //     cout << "Hello"; //infinite
     // }
 
     //----------------while Loop
-    int i = 0;
-    while(i <= 10){
-        cout << i << endl;
-        i+= 2;
-    }
+    // while(i <= 10){
+    //     cout << i << endl;
+    //     i+= 2;
+    // }
+
+    // do -while
+
+    // do{
+
+    // } while(condition);
 
 }
