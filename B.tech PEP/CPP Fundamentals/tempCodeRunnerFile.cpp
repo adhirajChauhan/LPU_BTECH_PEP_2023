@@ -1,1 +1,1 @@
-myFunc
+&var
