@@ -125,6 +125,36 @@ Node* reverse(Node* &head){
     return prev;
 }
 
+Node* kReverse(Node* head, int k){
+
+    if(head == NULL){
+        return NULL;
+    }
+
+    //reverse first k nodes
+    Node* prev = NULL;
+    Node* curr = head;
+    Node* next; 
+    int count = 0;
+
+    while(curr != NULL && count < k){
+        next = curr->next;
+        curr->next = prev;
+
+        prev = curr;
+        curr = next;
+        count++;
+    }
+
+    //recursion for remaining LL
+    if(next!=NULL){
+
+        head->next = kReverse(next, k);
+    }
+
+    return prev;
+}
+
 
 
 int main(){
@@ -137,6 +167,8 @@ int main(){
     insertAtTail(head, 2);
     insertAtTail(head, 9);
     insertAtTail(head, 10);
+    insertAtTail(head, 11);
+
 
     // cout << search(head, 99) << endl;
 
@@ -144,7 +176,9 @@ int main(){
     // deleteAtHead(head);
 
     display(head);
-    Node* rev = reverse(head);
+    // Node* rev = reverse(head);
+    Node* rev = kReverse(head,2);
+
     display(rev);
 
 }
