@@ -155,8 +155,45 @@ Node* kReverse(Node* head, int k){
     return prev;
 }
 
+Node* floydDetectLoop(Node* head){
+    if(head == NULL) return NULL;
 
+    Node* fast = head;
+    Node* slow = head;
 
+    while(slow!= NULL && fast != NULL){
+        fast = fast->next;
+        if(fast!= NULL){
+            fast = fast->next;
+        }
+
+        slow = slow->next;
+
+        if(slow==fast) return slow;
+    }
+
+    return NULL;
+
+}
+
+Node* getStartingNode(Node* head){
+    if(head == NULL){
+        return NULL;
+    }
+
+    Node* intersection = floydDetectLoop(head);
+    // int val = intersection -> data;
+    // cout << val <<endl;
+
+    Node* slow = head;
+
+    while(slow != intersection){
+        slow = slow -> next;
+        intersection = intersection->next;
+    }
+
+    return slow;
+}
 int main(){
     Node* head = NULL;
 
@@ -177,8 +214,26 @@ int main(){
 
     display(head);
     // Node* rev = reverse(head);
-    Node* rev = kReverse(head,2);
+    // Node* rev = kReverse(head,2);
 
-    display(rev);
+    // display(rev);
+
+    // if(floydDetectLoop(head)){
+    //     cout << "LOOP Exist" << endl;
+    // }
+    // else{
+    //     cout << "No LOOP" << endl;
+    // }
+
+    Node* loop = getStartingNode(head);
+    if(loop != NULL){
+        int startNode = loop ->data;
+        cout << "Loop start at : " << startNode << endl;
+
+    }
+    else{
+        cout << "No starting node found " << endl;
+
+    }
 
 }
