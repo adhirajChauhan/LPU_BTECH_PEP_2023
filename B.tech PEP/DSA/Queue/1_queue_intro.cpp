@@ -9,6 +9,7 @@ class Queue{
 
     public:
     Queue(){
+        size = 99999;
         arr = new int[size];
         front = -1;
         back = -1;
